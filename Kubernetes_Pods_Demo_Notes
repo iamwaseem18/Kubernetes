@@ -1,0 +1,72 @@
+🔹 Prerequisites
+Minikube installed and running
+kubectl configured to talk to Minikube
+🔹 Creating a Pod
+Command:
+kubectl run nginx --image=nginx
+What this does:
+Creates a pod named nginx
+Pulls image from Docker Hub
+Starts container inside the pod
+🔹 Verify Pod
+kubectl get pods
+Example Output:
+NAME    READY   STATUS    RESTARTS   AGE
+nginx   1/1     Running   0          3s
+Meaning:
+READY (1/1) → container is working
+STATUS (Running) → pod is active
+RESTARTS → how many times it crashed
+AGE → how long it’s been running
+🔹 Inspect Pod Details
+kubectl describe pod nginx
+What you get:
+Node where pod is running
+Pod IP address
+Container details
+Events (very important for debugging)
+🔹 Important Fields (from describe)
+Node: where pod is scheduled
+IP: internal pod IP
+Image: container image used
+State: Running / Waiting / Failed
+🔹 Events Section (VERY IMPORTANT)
+
+Example:
+
+Scheduled → Pulling → Pulled → Created → Started
+Why it matters:
+Helps debug issues
+Shows lifecycle step-by-step
+
+👉 Example errors:
+
+ErrImagePull → wrong image name
+ImagePullBackOff → cannot download image
+🔹 Get More Info (Wide Output)
+kubectl get pods -o wide
+Output includes:
+Pod IP
+Node name
+More cluster-level info
+🔹 Key Concepts
+Every pod gets its own IP
+Pods run inside nodes (like Minikube)
+Pod lifecycle is tracked via events
+kubectl describe = best debugging tool
+🔥 Interview-ready explanation
+
+If asked “How do you debug a pod?”:
+
+👉
+I use kubectl describe pod <name> to check events like image pulling, scheduling, and container status. This helps identify issues like image errors or startup failures.
+
+🔹 Common Mistakes
+Typing wrong image (ngnix instead of nginx) ❌
+Not checking events ❌
+Ignoring pod status ❌
+🔹 Quick Workflow
+kubectl run nginx --image=nginx
+kubectl get pods
+kubectl describe pod nginx
+kubectl get pods -o wide
