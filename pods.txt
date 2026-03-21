@@ -1,0 +1,87 @@
+🔹 What is a Pod?
+Smallest deployable unit in Kubernetes
+Wraps one or more containers
+Represents one instance of an application
+Runs on a node inside the cluster
+
+👉 Think of it as:
+Pod = Wrapper around container(s)
+
+🔹 Key Characteristics
+Usually 1 container per pod (most common)
+Gets its own IP address
+Containers inside share:
+Network (localhost)
+Storage (volumes)
+Created, scaled, and deleted as a single unit
+🔹 Scaling in Kubernetes
+❌ Don’t add more containers to same pod
+✅ Create more pods
+
+Example:
+
+1 user → 1 pod
+More users → multiple pods
+
+👉 Kubernetes distributes pods across nodes automatically
+
+🔹 Multi-Container Pods
+A pod can have multiple containers
+Used when containers need to work closely together
+Example:
+Main app container
+Helper container (logging, data processing)
+Important:
+Start together
+Share network (localhost)
+Share storage
+Die together
+🔹 Why Pods (vs plain Docker)?
+With Docker:
+docker run app
+docker run app
+docker run helper --link app
+
+Problems:
+
+Manual scaling
+Manual linking
+Hard to manage
+With Kubernetes:
+Define everything inside a pod
+Kubernetes handles:
+Scaling
+Networking
+Lifecycle
+
+👉 Much cleaner and automated
+
+🔹 Creating a Pod
+Basic command:
+kubectl run nginx --image=nginx
+
+👉 Creates a pod using image from Docker Hub
+
+🔹 Check Pod Status
+kubectl get pods
+Possible states:
+ContainerCreating → pulling image
+Running → ready
+Error → something failed
+🔹 Important Notes
+Pods are ephemeral (can be destroyed anytime)
+You usually don’t manage pods directly in real systems
+👉 Use Deployments instead
+Pod is the foundation of everything in Kubernetes
+🔥 Interview-ready understanding
+
+If asked “What is a Pod?”:
+
+👉
+A Pod is the smallest deployable unit in Kubernetes that encapsulates one or more containers, sharing network and storage, and represents a single instance of an application.
+
+🔹 Common Mistakes
+Thinking pod = container ❌
+Scaling by adding containers ❌
+Not checking pod status ❌
+Typos in image name (like ngnix) ❌
