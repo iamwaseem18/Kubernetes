@@ -1,0 +1,183 @@
+# 🧾 Introduction to YAML
+
+YAML (Yet Another Markup Language) is a **human-readable data format** used for configuration files. It is widely used in tools like Kubernetes because it is simple and easy to understand compared to XML or JSON.
+
+---
+
+## 🔹 Basic Example
+
+```yaml
+Servers:
+  - name: Server1
+    owner: John
+    created: 12232012
+    status: active
+```
+
+---
+
+## 🔹 Key-Value Pairs
+
+YAML uses simple key-value structure:
+
+```yaml
+Fruit: Apple
+Vegetable: Carrot
+Liquid: Water
+Meat: Chicken
+```
+
+⚠️ Always leave a space after `:`
+
+---
+
+## 🔹 Lists (Arrays)
+
+Lists are defined using `-`
+
+```yaml
+Fruits:
+  - Orange
+  - Apple
+  - Banana
+
+Vegetables:
+  - Carrot
+  - Cauliflower
+  - Tomato
+```
+
+---
+
+## 🔹 Dictionaries (Maps)
+
+Group related data under one key:
+
+```yaml
+Banana:
+  Calories: 105
+  Fat: 0.4 g
+  Carbs: 27 g
+
+Grapes:
+  Calories: 62
+  Fat: 0.3 g
+  Carbs: 16 g
+```
+
+👉 Indentation is **very important**
+
+---
+
+## 🔹 Nested Structures
+
+You can combine lists and dictionaries:
+
+```yaml
+Fruits:
+  - Banana:
+      Calories: 105
+      Fat: 0.4 g
+      Carbs: 27 g
+  - Grape:
+      Calories: 62
+      Fat: 0.3 g
+      Carbs: 16 g
+```
+
+---
+
+## 🔹 Dictionary vs List
+
+### Dictionary (Single Object)
+
+```yaml
+Color: Blue
+Model:
+  Name: Corvette
+  Year: 1995
+Transmission: Manual
+Price: $20,000
+```
+
+---
+
+### List of Dictionaries (Multiple Objects)
+
+```yaml
+- Color: Blue
+  Model:
+    Name: Corvette
+    Year: 1995
+  Transmission: Manual
+  Price: $20,000
+
+- Color: Red
+  Model:
+    Name: Corvette
+    Year: 1995
+  Transmission: Automatic
+  Price: $22,000
+```
+
+---
+
+## 🔹 Key Concepts
+
+| Concept     | Meaning                                |
+| ----------- | -------------------------------------- |
+| Dictionary  | Unordered key-value pairs              |
+| List        | Ordered collection                     |
+| Indentation | Defines structure (must be consistent) |
+| Comments    | Start with `#`                         |
+
+---
+
+## 🔹 Important Rules
+
+* YAML is **space-sensitive**
+* Do NOT use tabs
+* Keep indentation consistent
+* Wrong spacing = wrong structure
+
+---
+
+## 🔹 Example: Ordered vs Unordered
+
+### Dictionary (Unordered)
+
+```yaml
+Banana:
+  Calories: 105
+  Fat: 0.4 g
+  Carbs: 27 g
+```
+
+---
+
+### List (Ordered)
+
+```yaml
+Fruits:
+  - Orange
+  - Apple
+  - Banana
+```
+
+---
+
+## 🚀 Why YAML matters (for DevOps)
+
+* Used in **Kubernetes manifests**
+* Used in **CI/CD pipelines**
+* Easy to read and edit
+* Standard for infrastructure configuration
+
+---
+
+## 📌 Summary
+
+* YAML = simple + readable configuration format
+* Uses **key-value**, **lists**, and **dictionaries**
+* Indentation defines structure
+* Widely used in DevOps tools
