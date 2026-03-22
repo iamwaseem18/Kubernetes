@@ -1,0 +1,191 @@
+# 🚀 Kubernetes Pods with YAML
+
+This guide explains how to create and manage a **Pod in Kubernetes using a YAML file**.
+
+---
+
+## 🔹 Core Structure of Kubernetes YAML
+
+Every Kubernetes resource file has **4 main fields**:
+
+```yaml
+apiVersion:
+kind:
+metadata:
+spec:
+```
+
+---
+
+## 🔹 1. apiVersion
+
+Defines which Kubernetes API version to use.
+
+```yaml
+apiVersion: v1
+```
+
+👉 Example:
+
+* `v1` → Pods, Services
+* `apps/v1` → Deployments
+
+---
+
+## 🔹 2. kind
+
+Specifies the type of resource.
+
+```yaml
+kind: Pod
+```
+
+👉 Other examples:
+
+* Deployment
+* ReplicaSet
+* Service
+
+---
+
+## 🔹 3. metadata
+
+Contains basic information about the object.
+
+```yaml
+metadata:
+  name: myapp-pod
+  labels:
+    app: myapp
+    type: front-end
+```
+
+👉 Key points:
+
+* `name` → unique identifier
+* `labels` → used for grouping/filtering
+
+---
+
+## 🔹 4. spec
+
+Defines the actual configuration of the Pod.
+
+```yaml
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx
+```
+
+👉 You define:
+
+* container name
+* image
+* ports (optional)
+
+---
+
+## 🔹 Complete Pod YAML Example
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod
+  labels:
+    app: myapp
+    type: front-end
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx
+```
+
+---
+
+## 🔹 Create the Pod
+
+```bash
+kubectl create -f pod-definition.yml
+```
+
+---
+
+## 🔹 Verify the Pod
+
+### List Pods
+
+```bash
+kubectl get pods
+```
+
+---
+
+### Detailed Info
+
+```bash
+kubectl describe pod myapp-pod
+```
+
+---
+
+## 🔹 Sample Output
+
+```text
+NAME        READY   STATUS    RESTARTS   AGE
+myapp-pod   1/1     Running   0          20s
+```
+
+---
+
+## 🔹 Debugging Tip (important for interviews)
+
+If something goes wrong:
+
+```bash
+kubectl describe pod myapp-pod
+kubectl logs myapp-pod
+```
+
+👉 This helps you:
+
+* check events
+* view errors
+* debug quickly
+
+---
+
+## 🔹 Key Concepts
+
+| Field      | Purpose                 |
+| ---------- | ----------------------- |
+| apiVersion | API version of resource |
+| kind       | Type of object          |
+| metadata   | Name + labels           |
+| spec       | Desired state/config    |
+
+---
+
+## 🔥 Important Notes
+
+* YAML is **indentation-sensitive**
+* Use spaces, not tabs
+* Wrong indentation = errors
+
+---
+
+## 🚀 Why this matters
+
+* Kubernetes uses YAML for all configs
+* Essential for DevOps / Platform roles
+* Used in real-world deployments
+
+---
+
+## 📌 Summary
+
+* Pods are defined using YAML
+* 4 key fields: apiVersion, kind, metadata, spec
+* Use `kubectl create/apply` to deploy
+* Use `get`, `describe`, `logs` to debug
